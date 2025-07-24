@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, memo } from 'react';
-import { Search, ShoppingBag, User, Menu, X, Heart, ArrowLeft, Camera, Settings } from 'lucide-react';
+import { Search, ShoppingBag, User, Menu, X, Heart, ArrowLeft } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginModal from '@/components/LoginModal';
@@ -123,9 +123,9 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
   };
 
   const menuItems = [
-    { label: 'Shop', path: '/catalog', icon: ShoppingBag },
-    { label: 'Body Scan', path: '/scan', icon: Camera },
-    { label: 'Settings', path: '/settings', icon: Settings }
+    { label: 'Shop', path: '/catalog' },
+    { label: 'Body Scan', path: '/scan' },
+    { label: 'Settings', path: '/settings' }
   ];
 
   return (
@@ -261,11 +261,11 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
         {/* Glass Dropdown Menu */}
         {isMenuOpen && (
           <div className="mt-2 mx-6 animate-fade-in-up" style={{
-            background: 'rgba(8, 60, 48, 0.95)',
-            backdropFilter: 'blur(20px)',
-            border: '2px solid rgba(220, 208, 168, 0.4)',
+            background: 'rgba(249, 246, 237, 0.95)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(8, 60, 48, 0.1)',
             borderRadius: '1.5rem',
-            boxShadow: '0 20px 60px rgba(8, 60, 48, 0.4)'
+            boxShadow: '0 20px 60px rgba(8, 60, 48, 0.1)'
           }}>
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-6 sm:py-8">
               <div className="flex justify-center gap-6 sm:gap-12 flex-wrap">
@@ -276,13 +276,13 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
                         navigate(item.path);
                         setIsMenuOpen(false);
                       }}
-                      className="text-center transition-all duration-300 flex flex-col items-center px-4 py-6 sm:px-6 sm:py-8 space-y-3 sm:space-y-4 rounded-2xl hover:bg-white/20 hover:scale-105 hover-lift animate-slide-in-right"
+                      className="text-center transition-all duration-300 flex flex-col items-center px-4 py-6 sm:px-6 sm:py-8 space-y-3 sm:space-y-4 rounded-2xl hover:bg-white/30 hover:scale-105 hover-lift animate-slide-in-right tech-menu-item"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ backgroundColor: 'rgba(220, 208, 168, 0.2)' }}>
-                        <item.icon size={24} style={{ color: 'rgb(220, 208, 168)' }} />
+                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center tech-menu-icon">
+                        <div className="w-6 h-6 rounded-lg" style={{ backgroundColor: '#083C30' }}></div>
                       </div>
-                      <span className="font-medium text-sm sm:text-base font-['Urbanist'] text-white">{item.label}</span>
+                      <span className="font-medium text-sm sm:text-base font-['Urbanist']" style={{ color: '#083C30' }}>{item.label}</span>
                     </button>
                   </div>
                 ))}
